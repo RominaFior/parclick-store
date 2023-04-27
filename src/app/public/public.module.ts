@@ -1,21 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
-import { ProductDetailComponent } from './components';
+import {
+  HomeModule,
+  NotFoundModule,
+  ProductDetailModule,
+  ProductSearchModule,
+} from './pages';
 import { PublicRoutingModule } from './public-routing.module';
 
-import { HomeModule, NotFoundModule, ProductSearchModule } from './pages';
-
 @NgModule({
-  declarations: [ProductDetailComponent],
+  declarations: [],
   imports: [
     CommonModule,
     PublicRoutingModule,
     HomeModule,
     ProductSearchModule,
-    NotFoundModule
+    NotFoundModule,
+    ProductDetailModule,
   ],
   providers: [],
-  exports: [ProductDetailComponent],
+  exports: [],
 })
 export class PublicModule {}
