@@ -1,0 +1,55 @@
+<div class="container py-4">
+  <header class="pb-3 mb-4 border-bottom">
+    <a
+      href="/"
+      class="d-flex align-items-center text-dark text-decoration-none"
+    >
+      <img src="assets/images/store.png" width="25" class="me-2" />
+      <span class="fs-4">Search products</span>
+    </a>
+  </header>
+
+  <div class="p-3 mb-2 bg-body-tertiary rounded-3">
+    <div class="container-fluid py-4">
+      <app-search></app-search>
+    </div>
+    <div class="row">
+      <div class="col">
+        <app-categories-dropdown
+          [categoryName]="categoryNames"
+          [title]="dropdownTitle"
+        ></app-categories-dropdown>
+      </div>
+      <div class="col">
+        <app-price-dropdown></app-price-dropdown>
+      </div>
+    </div>
+
+    <!-- TARJETA DE PRODUCTOS -->
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col" *ngFor="let product of products$ | async">
+        <div class="card">
+          <img [src]="product.images[0]" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">{{ product.title }}</h5>
+            <p class="card-text">
+              {{ product.description }}
+            </p>
+            <button (click)="seeProduct(product.id)" class="btn btn-primary">
+              See more
+            </button>
+          </div>
+          <div class="card-footer row">
+            <small class="text-body-secondary col">{{
+              product.price | currency
+            }}</small>
+            <small class="text-body-secondary col">{{
+              product.category.name
+            }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<input
+  class="form-control"
+  list="datalistOptions"
+  placeholder="Type product to search..."
+  (keyup.enter)="searchTextFn(searchText.value)"
+  #searchText
+/>
+<datalist id="datalistOptions">
+  <option  *ngFor="let product of products"  [value]="product.title"></option>
+</datalist>

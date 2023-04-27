@@ -1,0 +1,59 @@
+<div class="container py-4">
+  <header class="pb-3 mb-4 border-bottom">
+    <a
+      href="/"
+      class="d-flex align-items-center text-dark text-decoration-none"
+    >
+      <img src="assets/images/store.png" width="25" class="me-2" />
+      <span class="fs-4">Online store</span>
+    </a>
+  </header>
+
+  <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">
+        Parclick: Your Ultimate Parking Solution
+      </h1>
+      <p class="col-md-8 fs-4">
+        Welcome to Parclick! Our user-friendly platform allows you to reserve
+        and pay for your parking spot in advance, ensuring a stress-free parking
+        experience. With our affordable rates and convenient locations, Parclick
+        is your ultimate parking solution.
+      </p>
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        (click)="navigateSearch()"
+      >
+        Filter Products
+      </button>
+    </div>
+
+    <!-- TARJETA DE PRODUCTOS -->
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col" *ngFor="let product of products$ | async">
+        <div class="card">
+          <img [src]="product.images[0]" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">{{ product.title }}</h5>
+            <p class="card-text">
+              {{ product.description }}
+            </p>
+            <button (click)="seeProduct(product.id)" class="btn btn-primary">
+              See more
+            </button>
+          </div>
+          <div class="card-footer row">
+            <small class="text-body-secondary col">{{
+              product.price | currency
+            }}</small>
+            <small class="text-body-secondary col">{{
+              product.category.name
+            }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
